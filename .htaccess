@@ -1,0 +1,12 @@
+# Checks to see if the user is attempting to access a valid file,
+# such as an image or css document, if this isn’t true it sends the
+# request to index.php
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+ErrorDocument 404 "<br>Halaman tidak ditemukan<br>Silahkan kembali ke halaman utama"
+ErrorDocument 403 "<br>Halaman tidak ditemukan<br>Silahkan kembali ke halaman utama"
+
+Options All -Indexes
